@@ -1,0 +1,43 @@
+{
+  "name": "gh-account-exists",
+  "version": "0.1.0",
+  "description": "Check if a Github account with the given username exists or not",
+  "repository": "shinnn/gh-compare-commits",
+  "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+  "scripts": {
+    "pretest": "eslint --fix --format=codeframe index.js test.js",
+    "test": "node --throw-deprecation --track-heap-objects test.js",
+    "coverage": "istanbul cover test.js"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "github",
+    "name",
+    "username",
+    "account",
+    "check",
+    "exist",
+    "present",
+    "api",
+    "github-api",
+    "get",
+    "request",
+    "promise",
+    "promises"
+  ],
+  "dependencies": {
+    "gh-get": "^1.1.0"
+  },
+  "devDependencies": {
+    "@shinnn/eslint-config-node": "^3.0.0",
+    "eslint": "^3.13.1",
+    "istanbul": "^0.4.5",
+    "tape": "^4.6.3"
+  },
+  "eslintConfig": {
+    "extends": "@shinnn/node"
+  }
+}
