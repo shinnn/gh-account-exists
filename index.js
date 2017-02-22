@@ -4,7 +4,7 @@
 */
 'use strict';
 
-const inspect = require('util').inspect;
+const {inspect} = require('util');
 
 const ghGet = require('gh-get');
 
@@ -22,10 +22,19 @@ function onRejected(err) {
   return Promise.reject(err);
 }
 
-module.exports = function ghAccountExists(username, options) {
-  options = Object.assign({
+module.exports = function ghAccountExists(...args) {
+  const argLen = args.length;
+
+  if (argLen !== 1 && argLen !== 2) {
+    return Promise.reject(new TypeError(`Expected 1 or 2 arguments (string[, object]), but got ${
+      argLen === 0 ? 'no' : argLen
+    } arguments instead.`));
+  }
+
+  const [username] = args;
+  const options = Object.assign({
     userAgent: 'gh-account-exists https://github.com/shinnn/gh-account-exists'
-  }, options);
+  }, args[1]);
 
   if (typeof username !== 'string') {
     return Promise.reject(new TypeError(`${ERROR_MESSAGE}, but got ${inspect(username)}.`));

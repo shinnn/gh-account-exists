@@ -6,7 +6,7 @@ const test = require('tape');
 process.env.GITHUB_TOKEN = '';
 
 test('ghAccountExists()', t => {
-  t.plan(10);
+  t.plan(11);
 
   const option = {token: process.env.TOKEN_FOR_TEST};
 
@@ -85,8 +85,16 @@ test('ghAccountExists()', t => {
   ghAccountExists().then(t.fail, ({message}) => {
     t.strictEqual(
       message,
-      'Expected a Github username to check whether it exists or not, but got undefined.',
+      'Expected 1 or 2 arguments (string[, object]), but got no arguments instead.',
       'should fail when it takes no arguments.'
+    );
+  }).catch(t.fail);
+
+  ghAccountExists('a', {}, 'b').then(t.fail, ({message}) => {
+    t.strictEqual(
+      message,
+      'Expected 1 or 2 arguments (string[, object]), but got 3 arguments instead.',
+      'should fail when it takes too many arguments.'
     );
   }).catch(t.fail);
 });
