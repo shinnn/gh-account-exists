@@ -2,7 +2,7 @@
   "name": "gh-account-exists",
   "version": "0.1.0",
   "description": "Check if a Github account with the given username exists or not",
-  "repository": "shinnn/gh-compare-commits",
+  "repository": "shinnn/gh-account-exists",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
   "scripts": {
     "pretest": "eslint --fix --format=codeframe index.js test.js",
